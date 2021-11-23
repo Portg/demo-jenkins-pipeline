@@ -23,9 +23,34 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+    dependencies {
+        dependencySet(group: 'org.springframework', version: '5.2.18.RELEASE') {
+            entry 'spring-core'
+            entry 'spring-webmvc'
+            entry 'spring-web'
+            entry 'spring-context'
+            entry 'spring-aop'
+            entry 'spring-orm'
+            entry 'spring-jdbc'
+            entry 'spring-tx'
+            entry 'spring-beans'
+            entry 'spring-expression'
+            entry 'spring-aspects'
+            entry 'spring-jcl'
+        }
+
+        dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.55') {
+            entry 'tomcat-embed-core'
+            entry 'tomcat-embed-websocket'
+        }
+    }
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.hibernate:hibernate-core:5.4.32.Final'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.hsqldb:hsqldb'
 	annotationProcessor 'org.projectlombok:lombok'
